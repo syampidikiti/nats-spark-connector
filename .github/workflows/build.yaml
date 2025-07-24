@@ -29,24 +29,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - uses: sbt/setup-sbt@v1    
-    - name: Build
-      run: >
+    - name: Build V2
+      working-directory: V2
+      run: |
         echo "Building V2"
-        cd V2/
-        sbt test
-        sbt clean
-        sbt compile
-        sbt package
-        sbt assembly
+        sbt clean test package assembly
         ls nats-spark-connector/target/scala-2.12/
 
+    - name: Build Loadbalanced
+      working-directory: load_balanced
+      run: |
         echo "Building Loadbalanced"
-        cd load_balanced/
-        sbt test
-        sbt clean
-        sbt compile
-        sbt package
-        sbt assembly
+        sbt clean test package assembly
         ls target/scala-2.12/
         
 
