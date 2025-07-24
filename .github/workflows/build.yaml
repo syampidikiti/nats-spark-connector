@@ -29,12 +29,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - uses: sbt/setup-sbt@v1    
-    - name: Run tests
-      run: sbt test
     - name: Build
       run: >
         echo "Building V2"
         cd V2/
+        sbt test
         sbt clean
         sbt compile
         sbt package
@@ -43,6 +42,7 @@ jobs:
 
         echo "Building Loadbalanced"
         cd load_balanced/
+        sbt test
         sbt clean
         sbt compile
         sbt package
