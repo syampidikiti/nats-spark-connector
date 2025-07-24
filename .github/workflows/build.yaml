@@ -33,9 +33,20 @@ jobs:
       run: sbt test
     - name: Build
       run: >
+        echo "Building V2"
+        cd V2/
         sbt clean
         sbt compile
         sbt package
         sbt assembly
+        ls nats-spark-connector/target/scala-2.12/
+
+        echo "Building Loadbalanced"
+        cd load_balanced/
+        sbt clean
+        sbt compile
+        sbt package
+        sbt assembly
+        ls target/scala-2.12/
         
 
