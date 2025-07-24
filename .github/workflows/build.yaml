@@ -42,5 +42,22 @@ jobs:
         echo "Building Loadbalanced"
         sbt clean test package assembly
         ls target/scala-2.12/
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: "test_rel_tag"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Upload JARs to Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          V2/nats-spark-connector/target/scala-2.12/*.jar
+          load_balanced/target/scala-2.12/*.jar
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
         
 
