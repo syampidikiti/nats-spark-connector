@@ -42,19 +42,12 @@ jobs:
     - name: Create Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: "test_rel_tag_1"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Upload JARs to Release
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: "test_rel_tag_1"
+        tag_name: "test_rel_tag_12"
         files: |
           V2/nats-spark-connector/target/scala-2.12/*.jar
           load_balanced/target/scala-2.12/*.jar
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+  
         
 
